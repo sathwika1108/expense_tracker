@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const DEFAULT_API_URL = "https://expense-tracker-a6m3.onrender.com/api";
+const baseURL = import.meta.env.VITE_API_URL || DEFAULT_API_URL;
+
 const api = axios.create({
-  baseURL: "https://expense-tracker-a6m3.onrender.com/api",
+  baseURL,
 });
 
 api.interceptors.request.use((config) => {
