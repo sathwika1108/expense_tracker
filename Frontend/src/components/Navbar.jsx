@@ -16,25 +16,33 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav>
-      <h3>Expense Tracker</h3>
+    <nav className="app-nav">
+      <h3 className="brand">Expense Tracker</h3>
 
-      <div>
-        <button onClick={() => (window.location.href = "/dashboard")}>
+      <div className="nav-actions">
+        <button className="btn btn-secondary" onClick={() => (window.location.href = "/dashboard")}>
           Dashboard
         </button>
-        <button onClick={() => (window.location.href = "/add-expense")}>
+        <button className="btn btn-secondary" onClick={() => (window.location.href = "/add-expense")}>
           Add Expense
         </button>
-        <button onClick={() => (window.location.href = "/budget")}>
+        <button className="btn btn-secondary" onClick={() => (window.location.href = "/budget")}>
           Budget
         </button>
 
-        <button onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? "☀️" : "🌙"}
+        <button
+          className="btn btn-secondary theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          title={darkMode ? "Light mode" : "Dark mode"}
+        >
+          <span className="theme-icon" aria-hidden="true">
+            {darkMode ? "☀" : "☾"}
+          </span>
         </button>
 
         <button
+          className="btn btn-danger"
           onClick={() => {
             localStorage.removeItem("token");
             window.location.href = "/login";

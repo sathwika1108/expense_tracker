@@ -21,19 +21,24 @@ const setBudget = async (req, res) => {
   }
 };
 
-// GET CURRENT MONTH BUDGET
+// GET BUDGETS (single month if month query is given, otherwise all months)
 const getBudget = async (req, res) => {
   try {
     const { month } = req.query;
 
-    const budget = await Budget.findOne({
-      user: req.user._id,
-      month,
-    });
+    if (month) {
+      const budget = await Budget.findOne({
+        user: req.user._id,
+        month,
+      });
 
-    res.json(budget);
+      return res.json(budget);
+    }
+
+    const budgets = await Budget.find({ user: req.user._id }).sort({ month: 1 });
+    return res.json(budgets);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 

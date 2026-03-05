@@ -1,0 +1,8 @@
+node_modules/
+Frontend/node_modules/
+Backend/node_modules/
+Frontend/dist/
+Backend/dist/
+.vercel/
+Frontend/.vercel/
+*.log

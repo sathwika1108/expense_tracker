@@ -5,9 +5,12 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isCreating) return;
+    setIsCreating(true);
 
     try {
       const res = await api.post("/auth/register", {
@@ -21,6 +24,8 @@ function Register() {
     } catch (error) {
       console.log("REGISTER ERROR:", error);
       alert(error.response?.data?.message || "Registration failed");
+    } finally {
+      setIsCreating(false);
     }
   };
 
@@ -50,7 +55,9 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Create Account</button>
+        <button type="submit" disabled={isCreating}>
+          {isCreating ? "Creating..." : "Create Account"}
+        </button>
       </form>
 
       <p>

@@ -1,31 +1,31 @@
 import { Pie } from "react-chartjs-2";
 
 function ExpensePieChart({ expenses }) {
+  const filteredExpenses = Array.isArray(expenses) ? expenses : [];
   const categories = {};
 
-  expenses.forEach((exp) => {
+  filteredExpenses.forEach((exp) => {
     categories[exp.category] =
-      (categories[exp.category] || 0) + exp.amount;
+      (categories[exp.category] || 0) + Number(exp.amount);
   });
 
- const data = {
-  labels: Object.keys(categories),
-  datasets: [
-    {
-      data: Object.values(categories),
-      backgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56",
-        "#4CAF50",
-        "#9C27B0",
-        "#FF9800",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
+  const data = {
+    labels: Object.keys(categories),
+    datasets: [
+      {
+        data: Object.values(categories),
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#4CAF50",
+          "#9C27B0",
+          "#FF9800",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
 
   return (
     <div style={{ width: "300px" }}>
