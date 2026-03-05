@@ -2,7 +2,7 @@
 
 A full-stack Expense Tracker application that helps users manage daily expenses, set monthly budgets, and visualize spending patterns.
 
-🔗 **Live App**: https://expense-tracker-frontend-coral-sigma.vercel.app
+🔗 **Live App**: https://expense-tracker-yn5k.vercel.app/
 🔗 **Backend API**: https://expense-tracker-a6m3.onrender.com
 
 ---
