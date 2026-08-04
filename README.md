@@ -17,6 +17,7 @@ A full-stack Expense Tracker application that helps users manage daily expenses,
 - Data Visualization (Pie & Bar Charts)
 - CSV / PDF Export
 - Dark Mode
+- RAG-powered expense chatbot
 - Toast Notifications
 - Responsive UI
 
@@ -65,6 +66,12 @@ Create .env:
 PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=gpt-5
+
+The chatbot uses your authenticated expense and budget data as retrieved context.
+If `OPENAI_API_KEY` is not configured, it still returns a local RAG summary from
+matching records, but full LLM-quality answers require the API key.
 
 Frontend
 cd frontend

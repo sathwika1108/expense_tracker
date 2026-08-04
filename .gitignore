@@ -6,3 +6,5 @@ Backend/dist/
 .vercel/
 Frontend/.vercel/
 *.log
+.vscode/
+Frontend/.env.local
